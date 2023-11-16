@@ -1,0 +1,51 @@
+
+<% if @user.errors.any? %>
+    <%= @user.errors.count %> errors prohibited this book from being saved:
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<main>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
+  <%= form_with model: @user do |f| %>
+  <div class="form-group">
+  <label for="inputName">Name</label><br>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前", class:"form-control name"%>
+  </div>
+
+  <div class="form-group">
+  <label for="inputImage">Image</label><br>
+  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+  </div>
+
+  <div class="form-group">
+  <label for="inputIntroduction">Introduction</label><br>
+  <%= f.text_area :introduction, id: "inputIntroduction", class: "form-control introduction" %>
+   </div>
+
+  <div class="form-group">
+  <%= f.submit "Update User", class: "btn btn-secondary" %>
+   </div>
+  <% end %>
+   </div>
+  </div>
+</div>
+</main>
+
+
+
+<footer>
+  <div class="container mt-5">
+  	<div class="row">
+    	<div class="mx-auto">
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
